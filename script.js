@@ -3,7 +3,14 @@ async function getCountry(name){
     try {
         const response = await fetch(url);
         if (!response.ok){
-            throw new Error('Error message: ${response.status}');
+            error = document.createElement('error');
+            error.innerHTML=`
+            <ul>
+                <label>Country not found</label>
+                </ul>
+            `
+            document.getElementById("main").appendChild(error);
+
         }
 
         const json = await response.json();
